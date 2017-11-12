@@ -8,7 +8,7 @@ public class PlayerController : NetworkBehaviour
     public Transform bulletSpawn;
 
     public int speedBullet =  7;
-
+    public float speedPlayer = 7f;
     void Update()
     {
         if (!isLocalPlayer)
@@ -19,7 +19,7 @@ public class PlayerController : NetworkBehaviour
         // speed qd et mvt
         var x = Input.GetAxis("Horizontal") * Time.deltaTime * 250.0f;
         // speed zs et mvt
-        var z = Input.GetAxis("Vertical") * Time.deltaTime * 7.0f;
+        var z = Input.GetAxis("Vertical") * Time.deltaTime * speedPlayer;
 
         transform.Rotate(0, x, 0);
         transform.Translate(0, 0, z);
@@ -56,6 +56,30 @@ public class PlayerController : NetworkBehaviour
         Destroy(bullet, 2.0f);
     }
 
+    // Prendre des dégats
+    public void addSpeed(float amount)
+    {
+        if (!isServer)
+        {
+            return;
+        }
+        // On baisse la vie actuelle selon le nombre de dégats
+        speedPlayer += amount;
+
+        //Si la vie actuelle ateint 0 le personnage meurt
+      /*  if (currentHealth <= 0)
+        {
+            if (destroyOnDeath)
+            {
+                Destroy(gameObject);
+            }
+            else
+            {
+                currentHealth = maxHealth;
+                RpcRespawn();
+            }
+        }*/
+    }
 
     public override void OnStartLocalPlayer()
     {

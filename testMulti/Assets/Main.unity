@@ -246,7 +246,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4746387192974668, guid: 65f1578eca205b0488a598aac432c264, type: 2}
       propertyPath: m_LocalPosition.z
-      value: 49.86
+      value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 4746387192974668, guid: 65f1578eca205b0488a598aac432c264, type: 2}
       propertyPath: m_LocalRotation.x
@@ -291,6 +291,11 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 65f1578eca205b0488a598aac432c264, type: 2}
   m_IsPrefabParent: 0
+--- !u!4 &308874365 stripped
+Transform:
+  m_PrefabParentObject: {fileID: 4432296428142108, guid: ec5b45e29a9edbd42a98898fe17bdbab,
+    type: 2}
+  m_PrefabInternal: {fileID: 1522380054}
 --- !u!1 &336707417
 GameObject:
   m_ObjectHideFlags: 0
@@ -433,7 +438,7 @@ MonoBehaviour:
   m_OnlineScene: 
   m_SpawnPrefabs:
   - {fileID: 1616040505375316, guid: dd66cb2982f74524bb36d6493935caf3, type: 2}
-  - {fileID: 1158814635746940, guid: 0d1bc3f4b92a8404d883b253a84baf00, type: 2}
+  - {fileID: 1781706075119296, guid: 8dd1a37e274312048a7eedbf1afe24e7, type: 2}
   m_CustomConfig: 0
   m_MaxConnections: 4
   m_ConnectionConfig:
@@ -1013,7 +1018,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4746387192974668, guid: 65f1578eca205b0488a598aac432c264, type: 2}
       propertyPath: m_LocalPosition.z
-      value: -0.14000034
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4746387192974668, guid: 65f1578eca205b0488a598aac432c264, type: 2}
       propertyPath: m_LocalRotation.x
@@ -1337,6 +1342,54 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1512268629}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1001 &1522380054
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 2126377145}
+    m_Modifications:
+    - target: {fileID: 4432296428142108, guid: ec5b45e29a9edbd42a98898fe17bdbab, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: -3.880001
+      objectReference: {fileID: 0}
+    - target: {fileID: 4432296428142108, guid: ec5b45e29a9edbd42a98898fe17bdbab, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: -0.79
+      objectReference: {fileID: 0}
+    - target: {fileID: 4432296428142108, guid: ec5b45e29a9edbd42a98898fe17bdbab, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 16.89
+      objectReference: {fileID: 0}
+    - target: {fileID: 4432296428142108, guid: ec5b45e29a9edbd42a98898fe17bdbab, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4432296428142108, guid: ec5b45e29a9edbd42a98898fe17bdbab, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4432296428142108, guid: ec5b45e29a9edbd42a98898fe17bdbab, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4432296428142108, guid: ec5b45e29a9edbd42a98898fe17bdbab, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4432296428142108, guid: ec5b45e29a9edbd42a98898fe17bdbab, type: 2}
+      propertyPath: m_RootOrder
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 114224932988224110, guid: ec5b45e29a9edbd42a98898fe17bdbab,
+        type: 2}
+      propertyPath: bonusPrefab
+      value: 
+      objectReference: {fileID: 1781706075119296, guid: 8dd1a37e274312048a7eedbf1afe24e7,
+        type: 2}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: ec5b45e29a9edbd42a98898fe17bdbab, type: 2}
+  m_IsPrefabParent: 0
 --- !u!1 &1604675962
 GameObject:
   m_ObjectHideFlags: 0
@@ -1960,6 +2013,7 @@ Transform:
   - {fileID: 615174160}
   - {fileID: 1663877561}
   - {fileID: 1294601075}
+  - {fileID: 308874365}
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
