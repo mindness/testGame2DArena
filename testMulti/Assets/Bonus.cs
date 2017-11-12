@@ -7,7 +7,6 @@ public class Bonus : MonoBehaviour
     int vitesseMax = 17;
     void OnCollisionEnter(Collision collision)
     {
-
         try
         {
             print("touche bonus");

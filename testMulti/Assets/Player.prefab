@@ -381,7 +381,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_TransformSyncMode: 1
-  m_SendInterval: 0.041666668
+  m_SendInterval: 0.033333335
   m_SyncRotationAxis: 7
   m_RotationSyncCompression: 0
   m_SyncSpin: 0
@@ -521,6 +521,7 @@ MonoBehaviour:
     type: 2}
   bulletSpawn: {fileID: 4622021817451368}
   speedBullet: 7
+  speedPlayer: 7
 --- !u!136 &136966207474110998
 CapsuleCollider:
   m_ObjectHideFlags: 1

@@ -56,29 +56,16 @@ public class PlayerController : NetworkBehaviour
         Destroy(bullet, 2.0f);
     }
 
-    // Prendre des dégats
+
     public void addSpeed(float amount)
     {
-        if (!isServer)
+        if (!isServer && !isLocalPlayer)
         {
             return;
         }
         // On baisse la vie actuelle selon le nombre de dégats
         speedPlayer += amount;
 
-        //Si la vie actuelle ateint 0 le personnage meurt
-      /*  if (currentHealth <= 0)
-        {
-            if (destroyOnDeath)
-            {
-                Destroy(gameObject);
-            }
-            else
-            {
-                currentHealth = maxHealth;
-                RpcRespawn();
-            }
-        }*/
     }
 
     public override void OnStartLocalPlayer()
