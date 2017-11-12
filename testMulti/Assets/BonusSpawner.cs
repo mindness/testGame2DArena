@@ -9,12 +9,13 @@ public class BonusSpawner : NetworkBehaviour
     public Vector3 size;
 
     public GameObject bonusPrefab;
-    public int numberOfBonus;
+   // public int numberOfBonus = 5;
 
      public override void OnStartServer()
      {
         // test function random time and spawn 
-        StartCoroutine(WaitbeforeSpawn());
+            StartCoroutine("WaitbeforeSpawn");
+
     }
     private void Update()
     {
@@ -24,11 +25,12 @@ public class BonusSpawner : NetworkBehaviour
     }
     private void SpawnBonus()
     {
-        var spawnPosition = new Vector3(Random.Range(-size.x/2, size.x / 2)+33, 0.6f, Random.Range(-size.z / 2, size.z / 2)+40);
-        //var spawnRotation = Quaternion.Euler(0.0f, 0.0f, 0.0f);
+            var spawnPosition = new Vector3(Random.Range(-size.x / 2, size.x / 2) + 33, 0.6f, Random.Range(-size.z / 2, size.z / 2) + 40);
+            //var spawnRotation = Quaternion.Euler(0.0f, 0.0f, 0.0f);
 
-        var bonus = (GameObject)Instantiate(bonusPrefab, spawnPosition, Quaternion.identity);
-        NetworkServer.Spawn(bonus);
+            var bonus = (GameObject)Instantiate(bonusPrefab, spawnPosition, Quaternion.identity);
+            NetworkServer.Spawn(bonus);
+
     }
 
     private void OnDrawGizmosSelected()
@@ -40,9 +42,14 @@ public class BonusSpawner : NetworkBehaviour
     // gestion attente / temps -> appel spawn
     IEnumerator WaitbeforeSpawn()
     {
-        print(Time.time);
-        yield return new WaitForSeconds(5);
-        print(Time.time);
+        int cpt = 1;
+        int randomTimeSpawn = Random.Range(10, 30);
+        //print(randomTimeSpawn);
+      
+       // print(Time.time);
+        yield return new WaitForSeconds(randomTimeSpawn);
+       // print(Time.time);
         SpawnBonus();
+        cpt++;
     }
 }
