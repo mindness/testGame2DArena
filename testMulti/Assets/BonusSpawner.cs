@@ -42,14 +42,15 @@ public class BonusSpawner : NetworkBehaviour
     // gestion attente / temps -> appel spawn
     IEnumerator WaitbeforeSpawn()
     {
-        int cpt = 1;
-        int randomTimeSpawn = Random.Range(10, 30);
-        //print(randomTimeSpawn);
-      
-       // print(Time.time);
-        yield return new WaitForSeconds(randomTimeSpawn);
-       // print(Time.time);
-        SpawnBonus();
-        cpt++;
+        while (true)
+        {
+            int randomTimeSpawn = Random.Range(10, 30); // random number to choose the time before spawning bonus
+            print(randomTimeSpawn);
+
+            // print(Time.time);
+            yield return new WaitForSeconds(randomTimeSpawn);
+            // print(Time.time);
+            SpawnBonus();
+        }
     }
 }
