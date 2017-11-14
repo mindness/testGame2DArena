@@ -1,33 +1,52 @@
 ﻿using System;
 using UnityEngine;
 using UnityEngine.Networking;
+using UnityStandardAssets.CrossPlatformInput;
 
 public class PlayerController : NetworkBehaviour
 {
 
     public GameObject bulletPrefab;
     public Transform bulletSpawn;
-
     public int speedBullet =  14;
+    
+    [Header("Movemment Variables")]
     public float speedPlayer = 7f;
     public float speedRoationPlayer = 250.0f;
 
+    Rigidbody localRigidbody;
 
-   
-    void Update()
+
+    private void Start()
+    {
+        if (!isLocalPlayer)
+        {
+            Destroy(this);
+
+            return;
+        }
+
+        localRigidbody = GetComponent<Rigidbody>();
+    }
+    void FixedUpdate()
     {
         if (!isLocalPlayer)
          {
              return;
          }
         // speed qd et mvt
-        float x = Input.GetAxis("Horizontal") * Time.deltaTime * speedRoationPlayer;
+        float x = CrossPlatformInputManager.GetAxis("Horizontal");
         // speed zs et mvt
-        float z = Input.GetAxis("Vertical") * Time.deltaTime * speedPlayer;
+        float z = CrossPlatformInputManager.GetAxis("Vertical");
 
+        Vector3 deltaTranslation = transform.position + transform.forward * speedPlayer * z * Time.deltaTime;
+        localRigidbody.MovePosition(deltaTranslation);
 
-        transform.Rotate(0, x, 0);
-        transform.Translate(0, 0, z);
+        Quaternion deltaRotation = Quaternion.Euler(speedRoationPlayer * new Vector3(0, x, 0) * Time.deltaTime);
+        localRigidbody.MoveRotation(localRigidbody.rotation * deltaRotation);
+
+        //transform.Rotate(0, x, 0);
+        //transform.Translate(0, 0, z);
 
         if (Input.GetKeyDown(KeyCode.Space))
         {

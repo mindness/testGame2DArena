@@ -13,9 +13,10 @@ public class Bonus : MonoBehaviour
         var hit = collision.gameObject;
         var speed = hit.GetComponent<PlayerController>();
 
-        if (speed.speedPlayer < vitesseMax)
+        if (speed.speedPlayer < vitesseMax )
+        {
             speed.addSpeed(5.0f);
-
-        Destroy(gameObject);
+            Destroy(gameObject);
+        }
     }
 }
