@@ -61,7 +61,7 @@ public class Health : NetworkBehaviour
         {
             Vector3 spawnPoint = Vector3.zero;
 
-            if(spawnPoints != null && spawnPoints.Length > 0)
+            if (spawnPoints != null && spawnPoints.Length > 0)
             {
                 spawnPoint = spawnPoints[Random.Range(0, spawnPoints.Length)].transform.position;
             }
@@ -70,15 +70,16 @@ public class Health : NetworkBehaviour
         }
     }
     // point de vie player courant 
-     void OnGUI()
+    void OnGUI()
     {
-        
-         if (isLocalPlayer)
-         {
+
+        if (isLocalPlayer)
+        {
             GUI.Label(new Rect(10, 10, 100, 20), "Vie : " + healthBar.sizeDelta.x + " / " + maxHealth);
-         }
+        }
+
     }
-}﻿
+}
 
 
 

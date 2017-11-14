@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 using UnityEngine.Networking;
 
 public class PlayerController : NetworkBehaviour
@@ -7,19 +8,23 @@ public class PlayerController : NetworkBehaviour
     public GameObject bulletPrefab;
     public Transform bulletSpawn;
 
-    public int speedBullet =  7;
+    public int speedBullet =  14;
     public float speedPlayer = 7f;
+    public float speedRoationPlayer = 250.0f;
+
+
+   
     void Update()
     {
         if (!isLocalPlayer)
-        {
-            return;
-        }
-
+         {
+             return;
+         }
         // speed qd et mvt
-        var x = Input.GetAxis("Horizontal") * Time.deltaTime * 250.0f;
+        float x = Input.GetAxis("Horizontal") * Time.deltaTime * speedRoationPlayer;
         // speed zs et mvt
-        var z = Input.GetAxis("Vertical") * Time.deltaTime * speedPlayer;
+        float z = Input.GetAxis("Vertical") * Time.deltaTime * speedPlayer;
+
 
         transform.Rotate(0, x, 0);
         transform.Translate(0, 0, z);
@@ -28,6 +33,7 @@ public class PlayerController : NetworkBehaviour
         {
             CmdFire();
         }
+
     }
 
     [Command]
@@ -48,14 +54,11 @@ public class PlayerController : NetworkBehaviour
         NetworkServer.Spawn(bullet);
 
 
-       /* if (this.transform.position.x == bullet.transform.position.x && this.transform.position.y == bullet.transform.position.y && this.transform.position.z == bullet.transform.position.z)
-        {
-            Destroy(bullet);
-        }*/
+ 
         // Destruction de la balle après 2 secondes
         Destroy(bullet, 2.0f);
     }
-
+ 
 
     public void addSpeed(float amount)
     {
@@ -72,4 +75,6 @@ public class PlayerController : NetworkBehaviour
     {
         GetComponent<MeshRenderer>().material.color = Color.blue;
     }
+        
+
 }
