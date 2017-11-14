@@ -21,8 +21,6 @@ public class PlayerController : NetworkBehaviour
     {
         if (!isLocalPlayer)
         {
-            Destroy(this);
-
             return;
         }
 
@@ -63,17 +61,13 @@ public class PlayerController : NetworkBehaviour
          bulletPrefab,
          bulletSpawn.position,
          bulletSpawn.rotation);
-        
-
 
         // Ajout de velocité à la balle
         bullet.GetComponent<Rigidbody>().velocity = bullet.transform.forward * speedBullet;
 
         // faire apparaitre la balle sur les clients
         NetworkServer.Spawn(bullet);
-
-
- 
+        
         // Destruction de la balle après 2 secondes
         Destroy(bullet, 2.0f);
     }

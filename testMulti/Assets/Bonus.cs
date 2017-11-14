@@ -16,7 +16,7 @@ public class Bonus : MonoBehaviour
         if (speed.speedPlayer < vitesseMax )
         {
             speed.addSpeed(5.0f);
-            Destroy(gameObject);
         }
+        Destroy(gameObject);
     }
 }
