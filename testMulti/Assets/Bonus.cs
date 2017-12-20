@@ -4,19 +4,48 @@ using UnityEngine;
 
 public class Bonus : MonoBehaviour
 {
-    int vitesseMax = 17;
+    int vitesseMax = 15;
+    int rand;
+
+
+    private void Start()
+    {
+        rand = Random.Range(1,3);
+        switch (rand)
+        {
+            case 1:
+                GetComponent<MeshRenderer>().material.color = Color.blue;
+                break;
+            case 2:
+                GetComponent<MeshRenderer>().material.color = Color.red;
+                break;
+        }
+
+    }
     void OnCollisionEnter(Collision collision)
     {
-
-        print("touche bonus");
-        //Récupération de l'objet touché par la ball
         var hit = collision.gameObject;
-        var speed = hit.GetComponent<PlayerController>();
-
-        if (speed.speedPlayer < vitesseMax )
+        if (!hit.tag.Equals("Player")) { return; }
+        switch (rand)
         {
-            speed.addSpeed(5.0f);
+            case 1:
+                var player = hit.GetComponent<PlayerControllers>();
+                if (player.speedPlayer < vitesseMax )
+                {
+                    player.AddSpeedPlayer(5.0f);
+                }
+                break;
+            case 2:
+                var healthPlayer = hit.GetComponent<Health>();
+                if (healthPlayer.currentHealth < 120)
+                {
+                    healthPlayer.addHealth(10);
+                }
+               
+                break;
         }
+      
+        //on supprime l objet
         Destroy(gameObject);
     }
 }

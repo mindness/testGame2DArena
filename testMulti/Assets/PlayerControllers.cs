@@ -3,16 +3,19 @@ using UnityEngine;
 using UnityEngine.Networking;
 using UnityStandardAssets.CrossPlatformInput;
 
-public class PlayerController : NetworkBehaviour
+public class PlayerControllers : NetworkBehaviour
 {
 
     public GameObject bulletPrefab;
     public Transform bulletSpawn;
-    public int speedBullet =  14;
     
     [Header("Movemment Variables")]
     public float speedPlayer = 7f;
     public float speedRoationPlayer = 250.0f;
+
+    
+    float bulletSpeed = 15f;
+    float bulletRange = 1f;
 
     Rigidbody localRigidbody;
 
@@ -61,19 +64,20 @@ public class PlayerController : NetworkBehaviour
          bulletPrefab,
          bulletSpawn.position,
          bulletSpawn.rotation);
-
+     
         // Ajout de velocité à la balle
-        bullet.GetComponent<Rigidbody>().velocity = bullet.transform.forward * speedBullet;
+        bullet.GetComponent<Rigidbody>().velocity = bullet.transform.forward * bulletSpeed;
 
         // faire apparaitre la balle sur les clients
         NetworkServer.Spawn(bullet);
         
-        // Destruction de la balle après 2 secondes
-        Destroy(bullet, 2.0f);
+        // Destruction de la balle après x secondes
+        Destroy(bullet, bulletRange);
+ 
     }
  
 
-    public void addSpeed(float amount)
+    public void AddSpeedPlayer(float amount)
     {
         if (!isServer && !isLocalPlayer)
         {

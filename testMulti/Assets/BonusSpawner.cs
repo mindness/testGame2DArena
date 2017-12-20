@@ -8,7 +8,7 @@ public class BonusSpawner : NetworkBehaviour
     public Vector3 center;
     public Vector3 size;
 
-    public GameObject bonusPrefab;
+    public  GameObject bonusPrefab;
     // public int numberOfBonus = 5;
     public float sphereRadius = 0.5f;
 

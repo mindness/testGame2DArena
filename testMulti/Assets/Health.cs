@@ -49,6 +49,16 @@ public class Health : NetworkBehaviour
         }
     }
 
+    public void addHealth(int amount)
+    {
+        if (!isServer)
+        {
+            return;
+        }
+        // On augmente la vie actuelle selon le nombre de soin
+        currentHealth += amount;
+    }
+
     void OnChangeHealth(int health)
     {
         healthBar.sizeDelta = new Vector2(health, healthBar.sizeDelta.y);
@@ -72,10 +82,10 @@ public class Health : NetworkBehaviour
     // point de vie player courant 
     void OnGUI()
     {
-
         if (isLocalPlayer)
         {
             GUI.Label(new Rect(10, 10, 100, 20), "Vie : " + healthBar.sizeDelta.x + " / " + maxHealth);
+            
         }
 
     }

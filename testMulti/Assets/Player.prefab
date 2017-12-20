@@ -514,13 +514,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 1298562766209064}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3548226bd28b64c4e87c7341f7e9ad85, type: 3}
+  m_Script: {fileID: 11500000, guid: c4930ea41eda47b43b1f8bcb9382e163, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   bulletPrefab: {fileID: 1616040505375316, guid: dd66cb2982f74524bb36d6493935caf3,
     type: 2}
   bulletSpawn: {fileID: 4622021817451368}
-  speedBullet: 7
   speedPlayer: 7
   speedRoationPlayer: 250
 --- !u!136 &136966207474110998
